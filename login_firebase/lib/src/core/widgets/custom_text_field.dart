@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../constants/palette.dart';
+import '../src/core/theme/palette.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
+  final bool obscureText;
+  final TextEditingController controller;//To show dots in when form field is password
+
   const CustomTextField({
     super.key,
     required this.hintText,
+    required this.obscureText,
+    required this.controller,
   });
 
   @override
@@ -28,6 +33,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10), // Match the border radius
         ),
         child: TextFormField(
+          controller: controller,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(18),
             filled: true,
@@ -35,6 +41,13 @@ class CustomTextField extends StatelessWidget {
             border: const OutlineInputBorder(borderSide: BorderSide.none),
             hintText: hintText,
           ),
+          obscureText: obscureText,
+          validator: (value) {
+            if(value == null || value.isEmpty){
+              return "Field is Empty!";
+            }
+            return null;
+          },
         ),
       ),
     );
