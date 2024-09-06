@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:login_firebase/constants/constant.dart';
+import 'package:login_firebase/src/core/constants/constant.dart';
 import 'package:login_firebase/src/core/theme/palette.dart';
 
-import '../init_dependencies.dart';
-import '../navigation/router.dart';
+import '../../../init_dependencies.dart';
+import '../../core/navigation/router.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

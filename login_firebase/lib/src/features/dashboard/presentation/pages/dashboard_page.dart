@@ -1,18 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:login_firebase/init_dependencies.dart';
-import 'package:login_firebase/navigation/router.dart';
 import 'package:login_firebase/src/core/theme/palette.dart';
+
+import '../../../../core/navigation/router.dart';
+import '../../../auth/presentation/bloc/login/login_bloc.dart';
 
 class Dashboard extends StatelessWidget {
 
-  final FirebaseAuth _firebaseAuth = serviceLocator<FirebaseAuth>();
 
   Dashboard({super.key});
 
   void _logout(BuildContext context) {
-    _firebaseAuth.signOut();
+    context.read<LoginBloc>().add(LogoutRequestedEvent());
     context.go(AppRoute.login);
   }
 
